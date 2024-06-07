@@ -85,5 +85,16 @@ public function search()
     $this->view('siswa/index', $data);
     $this->view('templates/footer');
 }
+public function delete($id)
+{
+    if ($this->model('SiswaModel')->deleteSiswa($id)) {
+        Flasher::setFlasher('success', 'Berhasil menghapus data');
+    } else {
+        Flasher::setFlasher('error', 'Gagal menghapus data');
+    }
+    header('Location: ' . BASEURL . '/siswa/index');
+    exit;
+}
+
 
 }
