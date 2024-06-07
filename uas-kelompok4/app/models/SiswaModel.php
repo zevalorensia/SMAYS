@@ -109,6 +109,13 @@ public function searchSiswaByKelas($keyword)
     return $this->db->resultSet();
 }
 
-
+public function deleteSiswa($id)
+{
+    $this->db->query('DELETE FROM siswa WHERE id = :id');
+    $this->db->bind('id', $id);
+    
+    $this->db->execute();
+    return $this->db->rowCount();
+}
     
 }
